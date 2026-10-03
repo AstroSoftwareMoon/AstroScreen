@@ -1,38 +1,88 @@
-# AstroScreen
+<div align="center">
 
-Graba tu pantalla y haz capturas con una interfaz espacial. Código abierto, para Linux, Windows y macOS. Creado por [AstroSoftware](https://github.com/AstroSoftwareMoon).
+  <img src="astroscreen.png" alt="AstroScreen Logo" width="130" style="border-radius: 24px;" />
 
-- Elige cualquier pantalla o ventana y mira la vista previa en directo.
-- Capturas PNG (con copia al portapapeles) y vídeo WebM con pausa, micrófono y, en Windows, audio del sistema.
-- Calidad y FPS ajustables, cuenta atrás y atajos globales: `Ctrl/Cmd+Mayús+R` graba y `Ctrl/Cmd+Mayús+S` captura.
-- Guardado automático en `Imágenes/AstroScreen` y `Vídeos/AstroScreen`, con una biblioteca integrada.
-- Botón de soporte que lleva a nuestro Discord: https://discord.gg/eBszxvAuhN
+  # AstroScreen
 
-## Ejecutar en local
+  **Graba tu pantalla y realiza capturas con una interfaz espacial intuitiva y elegante.**
+
+  [![License: MIT](https://img.shields.io/badge/Licencia-MIT-5eead4.svg)](LICENSE)
+  [![Electron](https://img.shields.io/badge/Electron-v31-1b1745.svg?logo=electron)](https://www.electronjs.org/)
+  [![Platform](https://img.shields.io/badge/Plataforma-Windows%20%7C%20Linux%20%7C%20macOS-ffb84d.svg)](#)
+  [![Discord](https://img.shields.io/badge/Discord-Unirse-5865F2.svg?logo=discord&logoColor=white)](https://discord.gg/eBszxvAuhN)
+
+  <br />
+
+  [Características](#-características) • [Instalación](#-instalación-y-uso) • [Atajos](#-atajos-de-teclado) • [Permisos](#-permisos) • [Comunidad](#-soporte-y-comunidad)
+
+</div>
+
+---
+
+## ✨ Características
+
+- 🖥️ **Selector dinámico:** Elige cualquier pantalla o ventana activa con previsualización en tiempo real.
+- 🎥 **Grabación de vídeo fluida:** Graba en formato WebM de alta definición con pausa y reanudación.
+- 🎙️ **Audio versátil:** Soporte para micrófono y, en Windows, captura del audio del sistema (*loopback*).
+- 📸 **Capturas instantáneas:** Exporta a PNG y copia directamente al portapapeles con un solo clic.
+- 🎛️ **Ajustes personalizables:** Configura calidad (Ligera, Equilibrada, Máxima), tasa de cuadros (15, 30, 60 FPS) y temporizador de cuenta atrás (3s, 5s).
+- 📂 **Biblioteca integrada:** Revisa, abre y gestiona tus grabaciones y capturas guardadas sin salir de la app.
+- 🌌 **Diseño inmersivo:** Interfaz moderna inspirada en el espacio con fondo cósmico dinámico.
+
+---
+
+## 🚀 Instalación y uso
+
+Para ejecutar AstroScreen en tu máquina local:
 
 ```bash
+# 1. Clona el repositorio
+git clone https://github.com/AstroSoftwareMoon/AstroScreen.git
+
+# 2. Entra en el directorio
+cd AstroScreen
+
+# 3. Instala las dependencias
 npm install
+
+# 4. Inicia la aplicación
 npm start
 ```
 
-## Compilar con GitHub
+---
 
-1. Sube este proyecto a un repositorio de GitHub.
-2. En la pestaña **Actions**, ejecuta el flujo **Build** a mano (*Run workflow*), o crea una etiqueta:
-   ```bash
-   git tag v1.0.0 && git push origin v1.0.0
-   ```
-3. Descarga los instaladores desde los artefactos del flujo. Con una etiqueta `v*` también se publican en **Releases**:
-   `.AppImage` y `.deb` (Linux), `.exe` (Windows) y `.dmg` (macOS).
+## ⌨️ Atajos de teclado
 
-Para usar un icono propio, añade `build/icon.png` (512×512 o mayor).
+AstroScreen incluye atajos globales que puedes accionar incluso si la aplicación está minimizada:
 
-## Permisos
+| Atajo | Acción |
+| :--- | :--- |
+| <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>Mayús</kbd> + <kbd>R</kbd> | Iniciar o detener grabación |
+| <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>Mayús</kbd> + <kbd>S</kbd> | Tomar captura de pantalla |
 
-- **macOS:** concede *Grabación de pantalla* a AstroScreen en Ajustes del Sistema > Privacidad y seguridad. Al ser una app sin firmar, la primera vez ábrela con clic derecho > Abrir.
-- **Linux (Wayland):** el sistema mostrará su propio selector de pantalla.
-- **Windows:** la primera vez puede aparecer el aviso de SmartScreen; elige *Más información > Ejecutar de todas formas*.
+> Las capturas se guardan automáticamente en tu carpeta `Imágenes/AstroScreen` y las grabaciones en `Vídeos/AstroScreen`.
 
-## Licencia
+---
 
-MIT
+## 🔒 Permisos
+
+- **Windows:** La primera vez puede saltar el aviso de SmartScreen al no estar firmado; haz clic en *Más información > Ejecutar de todas formas*.
+- **macOS:** Concede permisos de *Grabación de pantalla* en *Ajustes del Sistema > Privacidad y seguridad*. Al abrir por primera vez, haz clic derecho sobre la app y selecciona *Abrir*.
+- **Linux (Wayland):** El gestor de ventanas del sistema presentará su propio diálogo nativo de selección de fuentes.
+
+---
+
+## 💬 Soporte y comunidad
+
+¿Tienes sugerencias, dudas o quieres charlar con el equipo de desarrollo?
+
+Únete a nuestro servidor oficial de **Discord**:  
+👉 [https://discord.gg/eBszxvAuhN](https://discord.gg/eBszxvAuhN)
+
+Desarrollado con ❤️ por [AstroSoftware](https://github.com/AstroSoftwareMoon).
+
+---
+
+## 📜 Licencia
+
+Distribuido bajo la Licencia [MIT](LICENSE).
