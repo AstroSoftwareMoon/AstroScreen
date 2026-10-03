@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self' blob:; style-src 'self'; script-src 'self'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AstroScreen</title>
+  <link rel="icon" type="image/png" href="astroscreen.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <header>
+    <div class="brand">
+      <img src="astroscreen.png" alt="AstroScreen" class="logo">
+      <div><h1>AstroScreen</h1><small>por AstroSoftware</small></div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab on" data-tab="capture" role="tab">Capturar</button>
+      <button class="tab" data-tab="library" role="tab">Biblioteca</button>
+    </nav>
+    <button id="support" class="support">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v12H9l-5 4z" fill="currentColor"/></svg>
+      Soporte en Discord
+    </button>
+  </header>
+
+  <main id="v-capture">
+    <aside>
+      <div class="side-head"><h2>Fuentes</h2><button id="refresh" class="ghost">Actualizar</button></div>
+      <div id="sources" class="sources" role="listbox" aria-label="Pantallas y ventanas"></div>
+    </aside>
+    <section class="stage">
+      <div class="viewport" id="viewport">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <video id="preview" autoplay muted playsinline></video>
+        <p id="empty" class="empty">Elige una pantalla o ventana para empezar.</p>
+        <span id="clock" class="clock" hidden>00:00</span>
+        <div id="count" class="count" hidden></div>
+      </div>
+      <div class="controls">
+        <button id="shot" class="btn" disabled>Captura</button>
+        <button id="copy" class="btn" disabled>Copiar</button>
+        <button id="rec" class="eclipse" disabled aria-label="Empezar a grabar" title="Grabar (Ctrl/Cmd+Mayús+R)"></button>
+        <button id="pause" class="btn" disabled>Pausa</button>
+      </div>
+      <div class="settings">
+        <label>Calidad<select id="q"><option value="3">Ligera</option><option value="8">Equilibrada</option><option value="16">Máxima</option></select></label>
+        <label>FPS<select id="fps"><option>15</option><option>30</option><option>60</option></select></label>
+        <label>Cuenta atrás<select id="cd"><option value="0">Sin</option><option value="3">3 s</option><option value="5">5 s</option></select></label>
+        <label class="toggle"><input type="checkbox" id="mic"><span>Micrófono</span></label>
+        <label class="toggle" id="sysbox"><input type="checkbox" id="sys"><span>Audio del sistema</span></label>
+      </div>
+    </section>
+  </main>
+
+  <main id="v-library" class="lib-view" hidden>
+    <div class="side-head"><h2>Tus capturas y grabaciones</h2><button id="folder" class="ghost">Abrir carpeta</button></div>
+    <div id="library" class="lib"></div>
+  </main>
+
+  <footer>
+    <span>Ctrl/Cmd + Mayús + R grabar · Ctrl/Cmd + Mayús + S captura</span>
+    <button id="github" class="ghost">Hecho por AstroSoftware</button>
+  </footer>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="renderer.js"></script>
+</body>
+</html>
