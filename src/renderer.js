@@ -199,3 +199,25 @@ $('#github').addEventListener('click', () => api.link('github'));
 })();
 
 loadSources();
+
+// ---- Comprobador de actualizaciones ----
+async function checkUpdates() {
+  try {
+    const update = await api.checkUpdates();
+    if (update && update.hasUpdate) {
+      const banner = $('#update-banner');
+      const versionEl = $('#update-version');
+      const btn = $('#update-btn');
+      const close = $('#update-close');
+
+      if (versionEl) versionEl.textContent = update.version;
+      if (btn) btn.onclick = () => api.openUrl(update.url);
+      if (close) close.onclick = () => { banner.hidden = true; };
+      if (banner) banner.hidden = false;
+    }
+  } catch {
+    // Si no hay internet o falla la API, no mostramos nada
+  }
+}
+
+setTimeout(checkUpdates, 1500);

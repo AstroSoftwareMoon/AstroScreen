@@ -80,6 +80,44 @@ app.whenReady().then(() => {
   ipcMain.handle('reveal', (_e, p) => shell.showItemInFolder(p));
   ipcMain.handle('folder', () => { fs.mkdirSync(dirs().webm, { recursive: true }); return shell.openPath(dirs().webm); });
   ipcMain.handle('link', (_e, key) => LINKS[key] && shell.openExternal(LINKS[key]));
+  ipcMain.handle('open-url', (_e, url) => {
+    if (typeof url === 'string' && (url.startsWith('https://') || url.startsWith('http://'))) {
+      shell.openExternal(url);
+    }
+  });
+
+  ipcMain.handle('check-updates', async () => {
+    try {
+      const res = await fetch('https://api.github.com/repos/AstroSoftwareMoon/AstroScreen/releases/latest', {
+        headers: { 'User-Agent': 'AstroScreen-App' },
+      });
+      if (!res.ok) return null;
+      const data = await res.json();
+      const latestTag = data.tag_name || '';
+      const currentVer = app.getVersion();
+
+      const parseSemver = (v) => v.replace(/^v/, '').split('.').map((n) => parseInt(n, 10) || 0);
+      const c = parseSemver(currentVer), l = parseSemver(latestTag);
+      let hasUpdate = false;
+      for (let i = 0; i < Math.max(c.length, l.length); i++) {
+        const cv = c[i] || 0, lv = l[i] || 0;
+        if (lv > cv) { hasUpdate = true; break; }
+        if (lv < cv) { break; }
+      }
+
+      if (hasUpdate) {
+        return {
+          hasUpdate: true,
+          version: latestTag,
+          url: data.html_url,
+          notes: data.body || '',
+        };
+      }
+    } catch {
+      // Sin conexión o fallo en la petición
+    }
+    return null;
+  });
 
   createWindow();
   const send = (a) => win && win.webContents.send('hotkey', a);

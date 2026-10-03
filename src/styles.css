@@ -45,6 +45,34 @@ button:focus-visible, input:focus-visible + span, .card:focus-visible {
 .support:hover { background: #6b77f5; transform: translateY(-1px); }
 .support svg { width: 16px; height: 16px; }
 
+.update-banner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 10px 24px;
+  background: linear-gradient(90deg, rgba(94, 234, 212, .18), rgba(124, 92, 255, .25));
+  border-bottom: 1px solid var(--ion);
+  animation: slideDown .3s ease;
+  position: relative; z-index: 20;
+}
+.update-content { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--star); }
+.update-content strong { color: var(--ion); }
+.update-icon { font-size: 16px; }
+.update-actions { display: flex; align-items: center; gap: 10px; }
+.update-btn {
+  background: var(--ion); color: var(--void); font-weight: 700;
+  padding: 6px 14px; border-radius: 999px; font-size: 13px;
+  transition: transform .15s, filter .15s;
+}
+.update-btn:hover { transform: translateY(-1px); filter: brightness(1.1); }
+.update-close {
+  background: none; color: var(--dim); font-size: 16px; line-height: 1;
+  padding: 4px 6px; border-radius: 6px; transition: color .15s;
+}
+.update-close:hover { color: var(--star); }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 main { flex: 1; min-height: 0; display: grid; grid-template-columns: 300px 1fr; gap: 20px; padding: 20px 24px 24px; }
 aside { display: flex; flex-direction: column; min-height: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; backdrop-filter: blur(8px); }
 .side-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
